@@ -1,0 +1,40 @@
+
+<div class="panel panel-primary">
+<div class="panel-heading"><h2>Listado de Empleados</h2></div>
+<div class="panel-body">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha nacimiento</th>
+      <th>Area</th>
+      <th>Puesto</th>
+      <th>Sexo</th>
+      <th>Salario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @empleados.each do |empleado| %>
+      <tr>
+        <td><%= empleado.nombre %></td>
+        <td><%= empleado.fecha_nacimiento %></td>
+        <td><%= empleado.area %></td>
+        <td><%= empleado.puesto %></td>
+        <td><%= empleado.sexo %></td>
+        <td><%= empleado.salario %></td>
+        <td><%= link_to 'Consultar', empleado, class: "btn btn-default" %></td>
+        <td><%= link_to 'Modificar', edit_empleado_path(empleado), class: "btn btn-default" %></td>
+        <td><%= link_to 'Eliminar', empleado, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Empleado', new_empleado_path, class: "btn btn-default" %>
+</div>
+</div>

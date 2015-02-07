@@ -1,0 +1,24 @@
+<div class="box grid_12">
+    <form name="parametros" method="get">
+        <div class="box-head"><h2>Campos de Reportes</h2></div>
+        <div class="box-content">
+            <p>
+            <strong>Reporte:</strong>
+            <%= @reporte_campo.reporte_id %>
+            </p>
+            <p>
+            <strong>Campo:</strong>
+            <%= @reporte_campo.campo %>
+            </p>
+            <p>
+            <strong>Descripcion:</strong>
+            <%= @reporte_campo.descripcion %>
+            </p>
+            <p>
+            <strong>Tipo:</strong>
+            <%= @reporte_campo.tipo %>
+            </p>
+            <%= link_to 'Edit', edit_reporte_campo_path(@reporte_campo) %> |
+            <%= link_to 'Back', reporte_campos_path %>
+        </div>
+    </div>

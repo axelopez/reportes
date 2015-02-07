@@ -1,0 +1,56 @@
+
+<div class="panel panel-primary">
+<div class="panel-heading"><h2>Reporte</h2></div>
+<div class="panel-body">
+    <%= simple_form_for(@reporte) do |f| %>          
+     
+     <div class="form-group">
+          <div class="input-group">
+            <p class="form-label">Titulo</p>            
+                <%= f.input :titulo, label:false, input_html: {class:"form-control"} %>
+            
+        </div>
+          <div class="input-group">
+            <p class="form-label">Area</p>
+            <div class="form-item">
+                <%= f.input :area, label:false, input_html: {class:"form-control"}  %>
+            </div>
+        </div>
+          <div class="input-group">
+            <p class="form-label">Descripcion</p>
+            <div class="form-item">
+                <%= f.input :descripcion, label:false, input_html:{rows: 5,  style: "width:500px",class:"form-control"} %>
+            </div>
+        </div>
+          <div class="input-group">
+            <p class="form-label">SQL</p>
+            <div class="form-item ">
+                <%= f.input :sql, label:false, input_html:{rows: 5, style: "width:500px",class:"form-control"} %>
+            </div>
+        </div>
+          <div class="input-group">
+            <p class="form-label">Activo</p>
+            <div class="form-item">
+                <%= f.input :activo, label:false %>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-item" style="text-align:right">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <%= link_to 'Regresar', reportes_path, class: "btn btn-default" %>
+            </div>
+        </div>
+    </div>
+        <% end %>
+    </div>
+
+</div>
+
+
+<script>
+$('#reporte_activo').iphoneStyle({
+  checkedLabel: 'SI',
+  uncheckedLabel: 'NO'
+});
+</script>

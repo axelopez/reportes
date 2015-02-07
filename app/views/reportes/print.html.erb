@@ -1,0 +1,144 @@
+<% if @reporte.reporte_filtros.count > 0 %>
+<div class="panel panel-primary">
+    
+        <div class="panel-heading"><span class="box-icon-24 fugue-24 counter"></span><h2>Parametros</h2></div>
+        <form name="parametros" method="get">
+        <div class="panel-body">
+            <% @reporte.reporte_filtros.each do |filtro| %>
+            <div class="form-row">
+                <p class="form-label"><%= filtro.etiqueta %> </p>
+
+                <div class="form-item">
+                    <%if (filtro.elementos||='').length ==0 %>
+                    <input type="text" name="parametro_<%= filtro.parametro %>" value="<%=@parametros[filtro.parametro]||=filtro.valor_inicial %>" />
+                    <% else %>
+                    <select name="parametro_<%= filtro.parametro %>" >
+                      <% filtro.elementos.split(",").each do |elemento| %>
+                        <option  value="<%= elemento %>" <%= 'selected="selected"' if (@parametros[filtro.parametro]||=filtro.valor_inicial)== elemento %>><%= elemento %> 
+                        
+                        </option>
+                      <% end %>
+                    </select>
+                    <% end %>
+                </div>
+
+            </div>
+            <% end %>
+            <div class="form-row">
+
+                <div class="form-item" style="text-align:right">
+                 <!--<input type="submit" class="button big blue" value="Cargar" />-->
+                  <button type="submit" class="button big blue">Ejecutar Reporte</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<% end %>
+<div class="panel panel-default">
+    <div class="panel-heading"><h2> <%= @reporte.titulo %></h2></div>
+    <div class="panel-body">
+        <table class="display table table-striped" id="reporte">
+            <thead>
+                <% @reporte.reporte_campos.each do |campo| %>
+                <th>
+                    <%= campo.descripcion %>
+                </th>
+                <% end %>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+            sumatoria = Array.new
+            @reporte.data(@parametros).each do |data|
+            %>
+            <tr>
+                <% @reporte.reporte_campos.each do |campo| %>
+                <td <%= campo.alineacion_datatable %> >
+                    <%= campo.formato_datatable data[campo.campo] %>
+                    <% if campo.sumatoria=="Suma" %>
+                    <% sumatoria[campo.id] = (sumatoria[campo.id]||=0) + data[campo.campo] %>
+                    <% end %>
+                </td>
+                <% end %>
+            </tr>
+            <% end %>
+        </tbody>
+        <tfoot>
+        <tr>
+            <% @reporte.reporte_campos.each do |campo| %>
+            <td <%= campo.alineacion_datatable %> >
+                <% if sumatoria[campo.id] %>
+                <%= campo.formato_datatable sumatoria[campo.id] %>
+                <% else %>
+                <br>
+                <% end %>
+            </td>
+            <% end %>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+<%# link_to 'Edit', edit_reporte_path(@reporte) %>
+<%= link_to 'Regresar', reportes_path, class: "btn btn-default"%>
+<script> /* SCRIPTS */
+$(document).ready(function() {
+    document.title = "<%= @reporte.titulo %>";
+    $('#reporte').dataTable( {
+                "sDom": 'T<"clear">lrtip',
+                   "scrollX": true,
+            "oTableTools": {
+                "sSwfPath": "/js/advanced-datatable/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
+                "aButtons": [
+    /* {
+        "sExtends": "copy",
+        "sButtonText": "Copiar"
+        },*/
+    /*  {
+        "sExtends": "csv",
+        "sButtonText": "CSV"
+        },*/
+        {
+        "sExtends": "xls",
+        "sButtonText": "Excel"
+        },
+        {
+        "sExtends": "pdf",
+        "sButtonText": "PDF",
+        <% if @reporte.reporte_filtros.count > 0 %>
+        "sPdfMessage": "<%= @parametros_descriptivo.html_safe %>"
+        <% end %>
+        },
+        {
+        "sExtends": "print",
+        "sButtonText": "Imprimir"
+        }
+    ]
+                },
+        "aaSorting": [[ 0, "asc" ]],
+        "aoColumns": [
+        <% @reporte.reporte_campos.each_with_index do |campo,index| %>
+            { "sType": "<%= campo.tipo_datatable %>" , "bVisible": <%= campo.visible_datatable%> }
+            <% if index < @reporte.reporte_campos.size - 1 %>
+            ,
+            <% end %>
+        <% end %>
+    
+],
+        "oLanguage": {
+            "sEmptyTable": "No se encontraron registros",
+            "sInfo": "Registros Totales _TOTAL_ mostrando (_START_ a _END_)",
+            "sInfoFiltered": " - Filtrado de un total de _MAX_ ",
+            "sLengthMenu": "_MENU_ registros por pagina",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior",
+            }
+                }
+    } );
+    } );
+</script>

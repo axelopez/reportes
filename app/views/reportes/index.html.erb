@@ -1,0 +1,44 @@
+<div class="panel panel-primary">
+<div class="panel-heading"><h2>Reportes</h2></div>
+<div class="panel-body">
+
+
+            <table class="display table table-striped">
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Area</th>
+                        <th>Descripcion</th>
+                        
+                        <th>Activo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @reportes.each do |reporte| %>
+                    <tr>
+                        <td><%= reporte.titulo %></td>
+                        <td><%= reporte.area %></td>
+                        <td><%= reporte.descripcion %></td>
+                        
+                        <td><%= "Si" if reporte.activo %>
+                            <%= "No" if !reporte.activo %>
+                        </td>
+
+                        <td><%= link_to 'Consultar', reporte,class:"btn btn-default" %>
+                        <%= link_to 'Modificar', edit_reporte_path(reporte), class:"btn btn-default" %>
+                        <%= link_to 'Ejecutar', print_reporte_path(reporte),class:"btn btn-primary" %>
+                        <%= link_to 'Eliminar', reporte, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-default" %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>                        
+
+        </div>
+    </div>
+<div class="sm-box grid_12">
+ <span>
+    <%= link_to 'Nuevo Reporte', new_reporte_path,class:"btn btn-primary" %>
+  </span>
+</div>
+

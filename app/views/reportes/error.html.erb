@@ -1,0 +1,46 @@
+<span class="label label-danger"><%= @error.html_safe %></span>
+<% if @reporte.reporte_filtros.count > 0 %>
+<div class="panel panel-primary">
+    
+        <div class="panel-heading"><span class="box-icon-24 fugue-24 counter"></span><h2>Parametros</h2></div>
+        <form name="parametros" method="get">
+        <div class="panel-body">
+            <% @reporte.reporte_filtros.each do |filtro| %>
+            <div class="form-row">
+                <p class="form-label"><%= filtro.etiqueta %> </p>
+
+                <div class="form-item">
+                    <%if (filtro.elementos||='').length ==0 %>
+                    <input type="text" name="parametro_<%= filtro.parametro %>" value="<%=@parametros[filtro.parametro]||=filtro.valor_inicial %>" />
+                    <% else %>
+                    <select name="parametro_<%= filtro.parametro %>" >
+                      <% filtro.elementos.split(",").each do |elemento| %>
+                        <option  value="<%= elemento %>" <%= 'selected="selected"' if (@parametros[filtro.parametro]||=filtro.valor_inicial)== elemento %>><%= elemento %> 
+                        
+                        </option>
+                      <% end %>
+                    </select>
+                    <% end %>
+                </div>
+
+            </div>
+            <% end %>
+            <div class="form-row">
+
+                <div class="form-item" style="text-align:right">
+                 <!--<input type="submit" class="button big blue" value="Cargar" />-->
+                  <button type="submit" class="button big blue">Ejecutar Reporte</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<% end %>
+
+<script> /* SCRIPTS */
+$(document).ready(function() {
+    document.title = "<%= @reporte.titulo %>";
+    } );
+</script>

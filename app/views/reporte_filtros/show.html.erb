@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reporte:</strong>
+  <%= @reporte_filtro.reporte_id %>
+</p>
+
+<p>
+  <strong>Etiqueta:</strong>
+  <%= @reporte_filtro.etiqueta %>
+</p>
+
+<p>
+  <strong>Parametro:</strong>
+  <%= @reporte_filtro.parametro %>
+</p>
+
+<p>
+  <strong>Valor inicial:</strong>
+  <%= @reporte_filtro.valor_inicial %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @reporte_filtro.tipo %>
+</p>
+
+<p>
+  <strong>Elementos:</strong>
+  <%= @reporte_filtro.elementos %>
+</p>
+
+<%= link_to 'Edit', edit_reporte_filtro_path(@reporte_filtro) %> |
+<%= link_to 'Back', reporte_filtros_path %>

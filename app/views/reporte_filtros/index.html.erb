@@ -1,0 +1,35 @@
+<h1>Listing reporte_filtros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reporte</th>
+      <th>Etiqueta</th>
+      <th>Parametro</th>
+      <th>Valor inicial</th>
+      <th>Tipo</th>
+      <th>Elementos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reporte_filtros.each do |reporte_filtro| %>
+      <tr>
+        <td><%= reporte_filtro.reporte_id %></td>
+        <td><%= reporte_filtro.etiqueta %></td>
+        <td><%= reporte_filtro.parametro %></td>
+        <td><%= reporte_filtro.valor_inicial %></td>
+        <td><%= reporte_filtro.tipo %></td>
+        <td><%= reporte_filtro.elementos %></td>
+        <td><%= link_to 'Show', reporte_filtro %></td>
+        <td><%= link_to 'Edit', edit_reporte_filtro_path(reporte_filtro) %></td>
+        <td><%= link_to 'Destroy', reporte_filtro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reporte filtro', new_reporte_filtro_path %>

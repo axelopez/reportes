@@ -1,0 +1,110 @@
+<div class="panel panel-default">
+     <div class="panel-heading"><h2>Reporte</h2></div>
+    <div class="panel-body">
+        <p>
+        <strong>Titulo:</strong>
+        <%= @reporte.titulo %>
+        </p><br><br>
+        <p>
+        <strong>Area:</strong>
+        <%= @reporte.area %>
+        </p><br><br>
+        <p>
+        <strong>Descripcion:</strong>
+        <%= @reporte.descripcion %>
+        </p><br><br>
+        <p>
+        <strong>Sql:</strong>
+        <%= @reporte.sql %>
+        </p><br><br>
+        <p>
+        <strong>Activo:</strong>
+        <%= "Si" if @reporte.activo %>
+        <%= "No" if !@reporte.activo %>
+        </p>
+
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h2>Campos</h2></div>
+    <div class="panel-body">
+        <table class="display table table-striped">
+            <thead>
+                <tr>
+                    
+                    <th>Campo</th>
+                    <th>Descripcion</th>
+                    <th>Tipo</th>
+                    <th>Sumatoria</th>
+                    <th>Orden</th>
+                    <th>Visible</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reporte.reporte_campos.each do |reporte_campo| %>
+                <tr>
+                    
+                    <td><%= reporte_campo.campo %></td>
+                    <td><%= reporte_campo.descripcion %></td>
+                    <td><%= reporte_campo.tipo %></td>
+                    <td><%= reporte_campo.sumatoria %></td>
+                    <td><%= reporte_campo.orden %></td>
+                    <td><%= "Si" if reporte_campo.visible %>
+                        <%= "No" if !reporte_campo.visible %>
+                    </td>
+                    <td><%# link_to 'Ver', reporte_campo, class:"button small blue" %>
+                        <%= link_to 'Modificar', edit_reporte_campo_path(reporte_campo), class:"btn btn-default"  %>
+                    <%= link_to 'Borrar', reporte_campo, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-default"  %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <br>
+        
+        
+        <%= link_to 'Nuevo Campo', reporte_new_reporte_campos_path(@reporte.id), class:"btn btn-default" %>
+        <br>
+        <br>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h2>Filtros</h2></div>
+    <div class="panel-body">
+        <table class="display table table-striped">
+            <thead>
+                <tr>
+                    
+                    <th>Etiqueta</th>
+                    <th>Parametro</th>
+                    <th>Valor inicial</th>
+                    <th>Tipo</th>
+                    <th>Elementos</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reporte.reporte_filtros.each do |reporte_filtro| %>
+                <tr>
+                    
+                    <td><%= reporte_filtro.etiqueta %></td>
+                    <td><%= reporte_filtro.parametro %></td>
+                    <td><%= reporte_filtro.valor_inicial %></td>
+                    <td><%= reporte_filtro.tipo %></td>
+                    <td><%= reporte_filtro.elementos %></td>
+                    <td><%# link_to 'Show', reporte_filtro %>
+                    <%= link_to 'Modificar', edit_reporte_filtro_path(reporte_filtro), class:"btn btn-default"  %>
+                    <%= link_to 'Eliminar', reporte_filtro, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-default"   %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-default">
+    <span>
+    <%= link_to 'Modificar', edit_reporte_path(@reporte), class:"btn btn-default"  %>
+    <%= link_to 'Ejecutar', print_reporte_path(@reporte), class:"btn btn-primary"  %>
+    <%= link_to 'Regresar', reportes_path, class:"btn btn-default" %>
+    </span>
+</div>

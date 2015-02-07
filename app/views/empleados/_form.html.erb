@@ -1,0 +1,16 @@
+<%= simple_form_for(@empleado) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nombre, input_html: {class:"form-control"}  %>
+    <%= f.input :fecha_nacimiento , input_html: {class:"form-control"} %>
+    <%= f.input :area, input_html: {class:"form-control"}  %>
+    <%= f.input :puesto, input_html: {class:"form-control"}  %>
+    <%= f.input :sexo , input_html: {class:"form-control"} %>
+    <%= f.input :salario, input_html: {class:"form-control"}  %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

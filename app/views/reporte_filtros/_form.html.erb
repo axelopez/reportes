@@ -1,0 +1,55 @@
+<div class="box grid_8">
+  <%= simple_form_for(@reporte_filtro) do |f| %>
+    <%= f.input :reporte_id, as: :hidden %>
+    <div class="box-head"><span class="box-icon-24 fugue-24 ui-toolbar"></span><h2>Campos del Reporte <%= @reporte_filtro.reporte.titulo %></h2></div>
+    <div class="box-content">
+        <div class="form-row">
+            <p class="form-label">Parametro</p>
+            <div class="form-item">
+                    <%= f.input :parametro, label:false %>
+            </div>
+        </div>
+        <div class="form-row">
+            <p class="form-label">Etiqueta</p>
+            <div class="form-item">
+                    <%= f.input :etiqueta, label:false %>
+            </div>
+        </div>
+        <div class="form-row">
+            <p class="form-label">Valor Inicial</p>
+            <div class="form-item">
+                    <%= f.input :valor_inicial, label:false %>
+            </div>
+        </div>
+        <div class="form-row">
+            <p class="form-label">Tipo de Dato</p>
+            <div class="form-item">
+                    <%= f.input :tipo, collection:["String", "Date", "Datetime", "Decimal"] , label:false  %>
+            </div>
+        </div>
+        <div class="form-row">
+            <p class="form-label">Lista de Opciones</p>
+            <div class="form-item">
+                    <%= f.input :elementos, label:false %>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-item" style="text-align:right">
+                <button type="submit" class="button big green">Guardar</button>
+                <%= link_to 'Regresar', reporte_path(@reporte_filtro.reporte_id), class: "button big blue" %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+<div class="box grid_4">
+    <div class="box-head"><span class="box-icon-24 fugue-24 database-export"></span><h2>SQL</h2></div>
+    <div class="box-content no-pad">
+     
+        <%= @reporte_filtro.reporte.sql %>
+     
+    </div>
+</div>
+
+

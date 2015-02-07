@@ -1,48 +1,62 @@
 Reportes
 ================
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+Aplicacion para generacion de reportes dinamicos de ruby a travez de sentencias SQL y configuraciones.
+
+Es simple, ya que no requiere programacion, simplemente registre su setencia SQL y configure su reporte.
+
+Esta aplicacion fue generada con la ayuda de RAILS COMPOSER [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
 provided by the [RailsApps Project](http://railsapps.github.io/).
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+Rails Composer es open source y apoyada por la comunidad.
 
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
 
 Ruby on Rails
 -------------
 
-This application requires:
+Esta aplicacion requiere:
 
 - Ruby 2.1.5
 - Rails 4.2.0
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+[Installing Rails](http://railsapps.github.io/installing-rails.html).
 
-Getting Started
----------------
 
-Documentation and Support
+Dudas o Comentarios
 -------------------------
+Buscame en
 
-Issues
+[Ruby on Rails Guatemala](https://www.facebook.com/groups/53771752321/?fref=ts)
+
+[Nightcrawler](https://twitter.com/axelopez)
+
+
+
+o mandame un correo a
+
+[axelopez@gmail.com](mailto:axelopez@gmail.com)
+
+¿Que sigue?
 -------------
+Aun hay trabajo pendiente
 
-Similar Projects
-----------------
+- Manejar Completamente todos los tipos de Datos
+- Mas resumenes en los reportes
+- Mascaras en los parametros
+- Sub Reportes
+- SQL para las listas de seleccion  de parametros
 
-Contributing
+
+¿Quieres Ayudar?
 ------------
+Bienvenido, contactame.
 
-Credits
+Creditos
 -------
+ DSI TECNOLOGIA 2015 / Nigtcrawler
+ 
 
 License
 -------
+[GPL](http://es.wikipedia.org/wiki/GNU_General_Public_License)
+

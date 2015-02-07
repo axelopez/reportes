@@ -1,0 +1,41 @@
+Reportes
+================
+
+Aplicacion para generacion de reportes dinamicos de ruby a travez de sentencias SQL.
+
+Esta aplicacion fue generada con la ayuda de RAILS COMPOSER [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+provided by the [RailsApps Project](http://railsapps.github.io/).
+
+Rails Composer es open source y apoyada por la comunidad.
+
+
+Ruby on Rails
+-------------
+
+Esta aplicacion requiere:
+
+- Ruby 2.1.5
+- Rails 4.2.0
+
+[Installing Rails](http://railsapps.github.io/installing-rails.html).
+
+Getting Started
+---------------
+
+Documentation and Support
+-------------------------
+
+Issues
+-------------
+
+Similar Projects
+----------------
+
+Contributing
+------------
+
+Credits
+-------
+
+License
+-------

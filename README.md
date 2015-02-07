@@ -1,9 +1,11 @@
 Reportes
 ================
 
-Aplicacion para generacion de reportes dinamicos de ruby a travez de sentencias SQL.
+Aplicación para generación de reportes dinámicos de ruby  con sentencias SQL.
 
-Es simple, ya que no requiere programacion, simplemente registre su setencia SQL y configure su reporte.
+Gracias a un DataTable nos permite exportarlo a CSV y PDF ademas de enviarlo a vista de impresion.
+
+Es simple, ya que no requiere programación, simplemente registre su sentencia SQL y configure su reporte.
 
 Esta aplicacion fue generada con la ayuda de RAILS COMPOSER [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer)  [RailsApps Project](http://railsapps.github.io/).
 
